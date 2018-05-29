@@ -1,0 +1,67 @@
+<div class="container-fluid">
+  <form [formGroup]="userform" novalidate autocomplete="false" #f="ngForm" (ngSubmit)="onSubmit()">
+<div class="well">
+<fieldset>
+  <legend class="col-xs-8">Addresses</legend>
+  <div class="col-xs-4">
+    <div class="pull-right">
+      <button type="button" class="btn btn-default " (click)="addAddress()" tooltip="Add Address" container="body">Add</button>
+    </div>
+  </div>
+  <div class="clearfix visible-md-block"></div>
+
+  <div formArrayName="addresses" class="col-md-12">
+    <div *ngFor="let address of addresses.controls; let i=index" class="panel panel-default">
+
+
+      <div [formGroupName]="i" class="panel-body p-n">
+        <div class="col-md-12 " *ngIf="addresses.controls.length>1">
+          <!-- <h2 class="pull-left">{{i + 1}}</h2> -->
+          <button type="button" class="btn btn-danger pull-right" (click)="removeAddress(i)" tooltip="Delete Address" container="body">
+            <i class="fa fa-trash"></i>
+          </button>
+
+        </div>
+
+
+        <div class="form-group col-md-12">
+          <label for="addressline1" class="control-label">Address Line 1</label>
+          <input type="text" class="form-control" name="addressLine1" formControlName="addressLine1" />
+
+        </div>
+
+        <div class="form-group col-md-12">
+          <label for="addressLine2" class="control-label">Address Line 2</label>
+          <input type="text" class="form-control" name="addressLine2" formControlName="addressLine2" />
+
+        </div>
+
+        <div class="form-group col-md-12">
+          <label for="addressLine3" class="control-label">Address Line 3</label>
+          <input type="text" class="form-control" name="addressLine3" formControlName="addressLine3" />
+
+        </div>
+
+   
+
+        <div class="form-group col-md-3">
+          <label for="zipCode" class="control-label">Zip/Postal Code</label>
+          <input type="text" class="form-control" formControlName="postalcode" name="postalcode">
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="clearfix visible-md-block"></div>
+  <div class="form-group col-md-12">
+    <div class="pull-right">
+
+      <button type="submit" class="btn btn-primary">Save</button>
+
+    </div>
+  </div>
+</fieldset>
+</div>
+</form>
+</div>
